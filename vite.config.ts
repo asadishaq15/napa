@@ -11,7 +11,7 @@ export default defineConfig({
       exposes: {
         './Template': './src/pages/template.tsx',   
       },
-      shared: ['react', 'react-dom', 'react-router-dom', 'framer-motion']
+      shared: ['react', 'react-dom', 'react-router-dom']
     })
   ],
   build: {

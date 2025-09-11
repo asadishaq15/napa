@@ -1,42 +1,73 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* host/src/App.css */
+
+/* Base styles with theme variables */
+:root {
+  /* Light theme (default for :root) */
+  --background-primary: #ffffff;
+  --background-secondary: #f9fafb;
+  --text-primary: #121828;
+  --text-secondary: #4b5563;
+  --border-color: rgba(229, 231, 235, 0.8);
+  --card-bg: #ffffff;
+  --card-border: rgba(229, 231, 235, 0.8);
+  --input-bg: #ffffff;
+  --input-border: #e5e7eb;
+  --navbar-bg: rgba(255, 255, 255, 0.8);
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dark {
+  /* Dark theme */
+  --background-primary: #121828;
+  --background-secondary: #1f2937;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --border-color: rgba(55, 65, 81, 0.5);
+  --card-bg: rgba(31, 41, 55, 0.6);
+  --card-border: rgba(55, 65, 81, 0.5);
+  --input-bg: rgba(31, 41, 55, 0.5);
+  --input-border: rgba(75, 85, 99, 0.5);
+  --navbar-bg: rgba(17, 24, 39, 0.8);
+  --shadow-color: rgba(0, 0, 0, 0.5);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Apply variables throughout the app */
+body {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.card {
-  padding: 2em;
+/* Additional CSS classes for themed components */
+.theme-card {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+  color: var(--text-primary);
 }
 
-.read-the-docs {
-  color: #888;
+.theme-input {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}
+
+/* Transition classes */
+.theme-transition {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease;
+}
+
+/* Add theme variants for gradient text */
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+}
+
+.dark .gradient-text {
+  @apply bg-gradient-to-r from-primary-400 to-secondary-400;
+}
+
+.light .gradient-text {
+  @apply bg-gradient-to-r from-primary-600 to-secondary-600;
 }
