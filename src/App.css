@@ -46,8 +46,6 @@ body {
   border-color: var(--input-border);
   color: var(--text-primary);
 }
-
-/* Transition classes */
 .theme-transition {
   transition: background-color 0.3s ease, 
               color 0.3s ease, 
@@ -55,7 +53,6 @@ body {
               box-shadow 0.3s ease;
 }
 
-/* Add theme variants for gradient text */
 .gradient-text {
   @apply bg-clip-text text-transparent;
 }
