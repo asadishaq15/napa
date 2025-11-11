@@ -65,7 +65,6 @@ function App() {
           }`}>
             This is a blank template. Start building your next great feature here.
           </p>
-          {/* Example placeholder: image, illustration, or icon */}
           <div className="flex flex-col items-center gap-4">
             <img
               src="https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=800"
