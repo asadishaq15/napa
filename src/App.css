@@ -1,8 +1,6 @@
 /* host/src/App.css */
-
-/* Base styles with theme variables */
 :root {
-  /* Light theme (default for :root) */
+
   --background-primary: #ffffff;
   --background-secondary: #f9fafb;
   --text-primary: #121828;
