@@ -1,4 +1,3 @@
-// pages/MembershipPlans.tsx
 import React, { useState } from 'react';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
