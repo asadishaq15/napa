@@ -1,7 +1,7 @@
 // components/Navbar.tsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaUserCircle, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
+import {FaBars, FaTimes } from 'react-icons/fa';
 import Logo from "../assets/NAPA_logo.png"
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

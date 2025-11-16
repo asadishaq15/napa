@@ -17,7 +17,7 @@ const mockProfiles = Array.from({ length: 24 }, (_, i) => ({
 }));
 
 const SearchProfiles: React.FC = () => {
-  const [profiles, setProfiles] = useState(mockProfiles);
+  const [profiles, _setProfiles] = useState(mockProfiles);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [filterOpen, setFilterOpen] = useState(false);
   const [filters, setFilters] = useState({

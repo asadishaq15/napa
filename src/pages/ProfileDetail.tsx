@@ -1,6 +1,5 @@
 // pages/ProfileDetail.tsx
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { FaHeart, FaEnvelope, FaPhone, FaChevronLeft, FaChevronRight, FaShareAlt, FaBookmark, FaFlag } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -40,7 +39,7 @@ const profileData = {
 };
 
 const ProfileDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  //const { id } = useParams<{ id: string }>();
   const [currentImage, setCurrentImage] = useState(0);
   const [showContact, setShowContact] = useState(false);
   
