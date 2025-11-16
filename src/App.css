@@ -1,6 +1,8 @@
 /* host/src/App.css */
-:root {
 
+/* Base styles with theme variables */
+:root {
+  /* Light theme (default for :root) */
   --background-primary: #ffffff;
   --background-secondary: #f9fafb;
   --text-primary: #121828;
@@ -29,12 +31,14 @@
   --shadow-color: rgba(0, 0, 0, 0.5);
 }
 
+/* Apply variables throughout the app */
 body {
   background-color: var(--background-primary);
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Additional CSS classes for themed components */
 .theme-card {
   background-color: var(--card-bg);
   border-color: var(--card-border);
@@ -46,6 +50,8 @@ body {
   border-color: var(--input-border);
   color: var(--text-primary);
 }
+
+/* Transition classes */
 .theme-transition {
   transition: background-color 0.3s ease, 
               color 0.3s ease, 
@@ -53,6 +59,7 @@ body {
               box-shadow 0.3s ease;
 }
 
+/* Add theme variants for gradient text */
 .gradient-text {
   @apply bg-clip-text text-transparent;
 }

@@ -1,89 +1,82 @@
-import  { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import './App.css'
+// src/App.tsx
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
-  const [currentTheme, setCurrentTheme] = useState<'dark' | 'light'>('dark');
+// Page imports
+import Home from './pages/Home';
+import AboutUs from './pages/AboutUs';
+import TermsOfUse from './pages/TermsOfUse';
+import Contact from './pages/Contact';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import ForgotPassword from './pages/ForgotPassword';
+import SearchProfiles from './pages/SearchProfiles';
+import MembershipPlans from './pages/MembershipPlans';
+import ProfileDetail from './pages/ProfileDetail';
 
-  useEffect(() => {
-    const isDark = document.documentElement.classList.contains('dark');
-    setCurrentTheme(isDark ? 'dark' : 'light');
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'class') {
-          const isDarkNow = document.documentElement.classList.contains('dark');
-          setCurrentTheme(isDarkNow ? 'dark' : 'light');
-        }
-      });
-    });
-    observer.observe(document.documentElement, { attributes: true });
-    return () => observer.disconnect();
-  }, []);
+// Optional: Lazy load pages for performance (uncomment if desired)
+// const Home = React.lazy(() => import('./pages/Home'));
+// ...
 
+const App: React.FC = () => {
   return (
-    <div className={`min-h-screen relative pt-32 pb-12
-      ${
-        currentTheme === 'dark'
-          ? 'bg-gradient-to-b from-[#000c1a] to-[#101a30]'
-          : 'bg-gradient-to-b from-[#f0f7ff] to-[#f8f9ff]'
-      }
-    `}>
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute -top-24 -right-24 w-96 h-96 ${
-          currentTheme === 'dark' ? 'bg-primary-600' : 'bg-primary-300'
-        } rounded-full opacity-20 blur-3xl`} />
-        <div className={`absolute top-1/3 -left-24 w-80 h-80 ${
-          currentTheme === 'dark' ? 'bg-secondary-600' : 'bg-secondary-300'
-        } rounded-full opacity-20 blur-3xl`} />
-        <div className={`absolute bottom-0 right-1/3 w-64 h-64 ${
-          currentTheme === 'dark' ? 'bg-primary-400' : 'bg-primary-200'
-        } rounded-full opacity-10 blur-3xl`} />
-      </div>
+    <Router>
+      {/* <React.Suspense fallback={<div>Loading...</div>}> // For lazy loading */}
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/terms" element={<TermsOfUse />} />
+          <Route path="/privacy" element={<TermsOfUse />} /> {/* Replace with PrivacyPolicy page if available */}
+          <Route path="/disclaimer" element={<TermsOfUse />} /> {/* Ditto */}
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/search" element={<SearchProfiles />} />
+          <Route path="/featured" element={<SearchProfiles />} /> {/* If there's a featured page, replace as needed */}
+          <Route path="/membership" element={<MembershipPlans />} />
+          <Route path="/membership-plans" element={<MembershipPlans />} />
+          <Route path="/profile/:id" element={<ProfileDetail />} />
+          {/* Add more static pages as needed, e.g. success stories, etc. */}
+          
+          {/* Example placeholder for registration success page */}
+          <Route 
+            path="/registration-success" 
+            element={
+              <div className="min-h-screen flex flex-col items-center justify-center">
+                <h1 className="text-3xl font-bold text-primary-600 mb-4">Registration Successful!</h1>
+                <p className="mb-4">Thank you for registering. Please check your email to verify your account.</p>
+                <a
+                  href="/login"
+                  className="inline-block px-4 py-2 rounded bg-primary-600 text-white font-semibold hover:bg-primary-700"
+                >
+                  Go to Login
+                </a>
+              </div>
+            }
+          />
 
-      <div className="container mx-auto relative z-10">
-        <motion.div
-          className="max-w-2xl mx-auto text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h1 className={`text-4xl md:text-5xl font-bold mb-4
-            ${currentTheme === 'dark' ? 'text-white' : 'text-gray-900'}
-          `}>
-            Welcome to the{' '}
-            <span className={`gradient-text bg-gradient-to-r ${
-              currentTheme === 'dark'
-                ? 'from-primary-400 to-secondary-400'
-                : 'from-primary-600 to-secondary-600'
-            } text-transparent bg-clip-text`}>
-              New Page
-            </span>
-          </h1>
-          <p className={`text-lg mb-12 ${
-            currentTheme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-          }`}>
-            This is a blank template. Start building your next great feature here.
-          </p>
-          <div className="flex flex-col items-center gap-4">
-            <img
-              src="https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=800"
-              alt="Template Placeholder"
-              className="w-48 h-48 object-cover rounded-xl shadow-lg border border-primary-100 dark:border-primary-800"
-            />
-            <span className={`inline-block px-4 py-2 rounded-lg font-medium
-              ${currentTheme === 'dark'
-                ? 'bg-primary-900/30 text-primary-300'
-                : 'bg-primary-50 text-primary-700'
-              }
-            `}>
-              Ready to customize!
-            </span>
-          </div>
-        </motion.div>
-      </div>
-    </div>
-    )
-}
+          {/* Catch-all for 404 */}
+          <Route
+            path="*"
+            element={
+              <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+                <h1 className="text-5xl font-bold text-primary-600 mb-4">404</h1>
+                <p className="mb-4 text-lg text-gray-700">Sorry, the page you are looking for was not found.</p>
+                <a
+                  href="/"
+                  className="inline-block px-4 py-2 rounded bg-primary-600 text-white font-semibold hover:bg-primary-700"
+                >
+                  Go Home
+                </a>
+              </div>
+            }
+          />
+        </Routes>
+      {/* </React.Suspense> */}
+    </Router>
+  );
+};
 
-export default App
+export default App;
